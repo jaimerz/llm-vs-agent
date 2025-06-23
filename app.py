@@ -16,7 +16,7 @@ Test how an agent uses tools vs a plain LLM.
 
 # Replace this with your API key for local testing
 # For deployment, use: openai.api_key = st.secrets.get("OPENAI_API_KEY")
-#openai.api_key = st.secrets.get("OPENAI_API_KEY")
+openai.api_key = st.secrets.get("OPENAI_API_KEY")
 
 # --- UI Controls with Session State ---
 if 'prompt' not in st.session_state:
