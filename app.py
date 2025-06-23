@@ -15,8 +15,8 @@ Test how an agent uses tools vs a plain LLM.
 """)
 
 # Replace this with your API key for local testing
-openai.api_key = "sk-your-key-here"
 # For deployment, use: openai.api_key = st.secrets.get("OPENAI_API_KEY")
+#openai.api_key = st.secrets.get("OPENAI_API_KEY")
 
 # --- UI Controls with Session State ---
 if 'prompt' not in st.session_state:
@@ -24,26 +24,25 @@ if 'prompt' not in st.session_state:
 
 st.write("Or try one of these example prompts:")
 
-# Example prompt options
-example_prompts = {
-    "Select an example...": "",
-    "Calculator Example": "What is 17823 * 472?",
-    "Search Example 1": "What is the capital of Australia?",
-    "Search Example 2": "Who is the current prime minister of France?",
-    "Search Example 3": "What’s the population of Paris?",
-    "Search Example 4": "What’s the population of Tokyo?",
-    "Search Example 5": "What is the currency of Japan?",
-    "Search Example 6": "What is the currency of Croatia?",
-    "Search Example 7": "What is the tallest mountain in the world?",
-    "Search Example 8": "Who is the president of the United States?",
-    "Multi-step Example 1": "What’s the weather in Paris tomorrow and what time is sunset?",
-    "Multi-step Example 2": "What’s the weather in Tokyo tomorrow and when is sunset?"
-}
+# Example prompts (keys and values are the same for better UX)
+example_prompts = [
+    "What is 17823 * 472?",
+    "Who is the current prime minister of France?",
+    "What is the inflation rate in France?",
+    "What is the current unemployment rate in Germany?",
+    "Who is the mayor of Paris?",
+    "What is the latest exchange rate between the Euro and the US Dollar?",
+    "What is the price of crude oil per barrel today?",
+    "What is the currency of Croatia?",
+    "Who is the president of the United States?",
+    "What’s the weather in Paris tomorrow and what time is sunset?",
+    "What’s the weather in Tokyo tomorrow and when is sunset?"
+]
 
-selected_example = st.selectbox("Select an example prompt:", list(example_prompts.keys()))
+selected_example = st.selectbox("Select an example prompt:", ["Select an example..."] + example_prompts)
 
 if selected_example != "Select an example...":
-    st.session_state['prompt'] = example_prompts[selected_example]
+    st.session_state['prompt'] = selected_example
 
 prompt = st.text_input("Enter your prompt:", value=st.session_state['prompt'])
 
@@ -78,25 +77,16 @@ def search_tool(query):
         results.append("The sunset time in Paris tomorrow is 9:58 PM.")
 
     if "weather" in cleaned_query and "tokyo" in cleaned_query and "tomorrow" in cleaned_query:
-        results.append("The weather in Tokyo tomorrow is Cloudy, 21°C.")
+        results.append("The weather in Tokyo tomorrow is Cloudy, 31°C.")
     if "sunset" in cleaned_query and "tokyo" in cleaned_query and "tomorrow" in cleaned_query:
-        results.append("The sunset time in Tokyo tomorrow is 6:48 PM.")
+        results.append("The sunset time in Tokyo tomorrow is 7:01 PM.")
 
     # Exact or close matches
-    if "capital of australia" in cleaned_query:
-        results.append("The capital of Australia is Canberra.")
-
     if "prime minister of france" in cleaned_query:
-        results.append("The current prime minister of France is François Bayrou.")
+        results.append("The current prime minister of France is François Bayrou (not for long though).")
 
     if "population of paris" in cleaned_query:
         results.append("The population of Paris is approximately 2.1 million people.")
-
-    if "population of tokyo" in cleaned_query:
-        results.append("The population of Tokyo is approximately 14 million people.")
-
-    if "currency of japan" in cleaned_query:
-        results.append("The currency of Japan is the Japanese Yen.")
 
     if "currency of croatia" in cleaned_query:
         results.append("The currency of Croatia is the Euro.")
@@ -107,11 +97,26 @@ def search_tool(query):
     if "president of the united states" in cleaned_query:
         results.append("The current president of the United States is Donald Trump.")
 
+    if "inflation rate in france" in cleaned_query:
+        results.append("The annual inflation rate in France in June 2025 is 0.6%.")
+
+    if "unemployment rate in germany" in cleaned_query:
+        results.append("The unemployment rate in Germany as of June 2025 is 6.3%.")
+
+    if "mayor of paris" in cleaned_query:
+        results.append("The current mayor of Paris is Anne Hidalgo.")
+
+    if "exchange rate" in cleaned_query and "euro" in cleaned_query and "us dollar" in cleaned_query:
+        results.append("As of 23rd June 2025, 1 Euro equals 1.15 US Dollars.")
+
+    if "price of crude oil" in cleaned_query or "oil per barrel" in cleaned_query:
+        results.append("The current price of crude oil per barrel is 76.13 USD as of 23rd June 2025.")
+
+
     if results:
         return " ".join(results)
     else:
         return "No search results found."
-
 
 # --- LLM + Tools Logic ---
 if submit and prompt:
