@@ -1,7 +1,3 @@
-
----
-
-````markdown
 # LLM vs Agent Sandbox
 
 This project is a Streamlit-based sandbox that demonstrates the difference between using a plain LLM and an agent with tools like calculators and search capabilities.
@@ -111,5 +107,3 @@ The app will automatically open in your browser at `http://localhost:8501`.
 MIT License
 
 ```
-
----
