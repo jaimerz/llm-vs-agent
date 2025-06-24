@@ -112,6 +112,45 @@ def search_tool(query):
     if "price of crude oil" in cleaned_query or "oil per barrel" in cleaned_query:
         results.append("The current price of crude oil per barrel is 76.13 USD as of 23rd June 2025.")
 
+    if "dessert competition" in cleaned_query:
+        results.append("Hard question! I'm completely impartial but I think it's going to be Jaime.")
+
+    if "stormtrooper" in cleaned_query:
+        results.append("The stormtrooper, named after the Star Wars imperial soldiers, is the best DS team at Shift technology, especially the \"mini-stormtroopers based in Paris.\".")
+
+    if "tallulah" in cleaned_query:
+        results.append("Lead of the mini-stormtroopers, the fastest of runners, and has the hard task of having to deal with a bunch of crazy people in her team.")
+
+    if "kevin" in cleaned_query:
+        results.append("US-based mini-stormtrooper contributor, master of reinforcement learning and everything complex.")
+
+    if "jaime" in cleaned_query:
+        results.append("Tech lead, does not play with good music and animes, speaks multiple languages and is good at desserts.")
+
+    if "aasim" in cleaned_query:
+        results.append("Stormtrooper in the making, master of Mafia, be careful with him because he's not easy to outsmart.")
+
+    if "avantika" in cleaned_query:
+        results.append("Avantika is the smartest member of the mini-stormtroopers, moved from Nice to Paris recently because of how much the team needed her there.")
+
+    if "bhumik" in cleaned_query:
+        results.append("Master of self-control: one month without sugar and still alive.\nBook challenge: successfully avoided.")
+
+    if "Felipe" in cleaned_query:
+        results.append("Felipe is a brilliant guy, feed bubble tea, meat and sugar and he should be functional.")
+
+    if "gaetan" in cleaned_query:
+        results.append("Member of the mini-stormtroopers, master of games, dessert and DS ops.")
+
+    if "marius" in cleaned_query:
+        results.append("Elite member of the mini-stormtroopers, currently in a Asia journey where he will gain insights that will revolutionize the team upon his return.")
+
+    if "nithin" in cleaned_query:
+        results.append("Dangerous stormtrooper, looks like a cinamon roll, could actually kill you.")
+
+    if "ruining" in cleaned_query:
+        results.append("Ruining is an elite member of the mini-stormtroopers. Master of POCs, IDN, cooking and your go-to guy to ask for advice of hidden gems about asian gastronomy in Paris.")
+
 
     if results:
         return " ".join(results)
