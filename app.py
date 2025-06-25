@@ -75,12 +75,12 @@ def search_tool(query):
 
     # Flexible matching for multi-step example
     if "weather" in cleaned_query and "paris" in cleaned_query and "tomorrow" in cleaned_query:
-        results.append("The weather in Paris tomorrow is Sunny, 29°C.")
+        results.append("The weather in Paris tomorrow is Mostly cloudy, 29°C.")
     if "sunset" in cleaned_query and "paris" in cleaned_query and "tomorrow" in cleaned_query:
         results.append("The sunset time in Paris tomorrow is 9:58 PM.")
 
     if "weather" in cleaned_query and "tokyo" in cleaned_query and "tomorrow" in cleaned_query:
-        results.append("The weather in Tokyo tomorrow is Cloudy, 31°C.")
+        results.append("The weather in Tokyo tomorrow is Cloudy with periodic rain showers, 33°C.")
     if "sunset" in cleaned_query and "tokyo" in cleaned_query and "tomorrow" in cleaned_query:
         results.append("The sunset time in Tokyo tomorrow is 7:01 PM.")
 
@@ -110,13 +110,13 @@ def search_tool(query):
         results.append("The current mayor of Paris is Anne Hidalgo.")
 
     if "exchange rate" in cleaned_query and "euro" in cleaned_query and "us dollar" in cleaned_query:
-        results.append("As of 23rd June 2025, 1 Euro equals 1.15 US Dollars.")
+        results.append("As of 25th June 2025, 1 Euro equals 1.16 US Dollars.")
 
     if "price of crude oil" in cleaned_query or "oil per barrel" in cleaned_query:
-        results.append("The current price of crude oil per barrel is 76.13 USD as of 23rd June 2025.")
+        results.append("As of 25th June 2025, the prices are WTI: 65.00 USD, Brent: 67.83 USD, Murban: 68.44 USD, Natural Gas: 3.53 USD.")
 
     if "dessert competition" in cleaned_query:
-        results.append("Hard question! I'm completely impartial but I think it's going to be Jaime.")
+        results.append("Hard question! I'm completely impartial but my vote goes for Jaime.")
 
     if "stormtrooper" in cleaned_query:
         results.append("The stormtrooper, named after the Star Wars imperial soldiers, is the best DS team at Shift technology, especially the \"mini-stormtroopers based in Paris.\".")
