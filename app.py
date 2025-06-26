@@ -139,7 +139,7 @@ def search_tool(query):
     if "bhumik" in cleaned_query:
         results.append("Master of self-control: one month without sugar and still alive.\nBook challenge: successfully avoided.")
 
-    if "Felipe" in cleaned_query:
+    if "felipe" in cleaned_query:
         results.append("Felipe is a brilliant guy, feed bubble tea, meat and sugar and he should be functional.")
 
     if "gaetan" in cleaned_query:
